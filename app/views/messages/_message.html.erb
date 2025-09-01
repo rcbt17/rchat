@@ -1,0 +1,7 @@
+<% message.user == Current.user ? div_class = "message-cloud" : div_class = "message-cloud-others"%>
+
+
+<div data-controller="message" data-user-id="<%= message.user_id %>">
+  <div class="author"><%= message.user.email_address%> － <%= time_ago_in_words(message.created_at) %> ago</div>
+  <%= message.body %>
+</div>

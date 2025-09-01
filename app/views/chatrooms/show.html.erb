@@ -1,17 +1,9 @@
 <%= render "shared/navbar"%>
+<%= turbo_stream_from @chatroom %>
 <div class="container">
   <h1><%= @chatroom.name %></h1>
-  <div class="chatbox">
-    <% @messages.each do |message| %>
-      <% if message.user == Current.user %>
-            <div class="message-cloud">
-      <% else %>
-          <div class="message-cloud-others">
-      <% end %>
-      <div class="author"><%= message.user.email_address%> － <%= time_ago_in_words(message.created_at) %> ago</div>
-      <%= message.body %>
-      </div>
-    <% end%>
+  <div data-controller="chatroom" class="chatbox" id="<%= dom_id(@chatroom, :messages)%>">
+    <%= render @messages%>
   </div>
 
   <%= form_with model: [@chatroom, @message], class: "new-message" do |form| %>

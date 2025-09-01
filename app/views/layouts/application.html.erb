@@ -22,7 +22,7 @@
     <%= javascript_importmap_tags %>
   </head>
 
-  <body>
+  <body  data-current-user-id="<%= Current.user.id %>">
     <%= yield %>
   </body>
 </html>
