@@ -9,13 +9,58 @@
  * Consider organizing styles into separate files for maintainability.
  */
 
- /* Roboto Font */
+/* Roboto Font */
 
- @import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:ital,wght@0,100;0,300;0,400;0,500;0,700;0,900;1,100;1,300;1,400;1,500;1,700;1,900&display=swap');
 
- body {
+body {
   font-family: "Roboto", sans-serif;
   font-optical-sizing: auto;
-  font-weight: 300;
+  font-weight: 400;
   font-style: normal;
- }
+  margin-top: 70px;
+  margin-left: 50px;
+  margin-right: 50px;
+}
+
+.container {
+  font-weight: 400;
+}
+
+.infobox {
+  background-color: rgb(228, 241, 245);
+  margin-top: 10px;
+  margin-bottom: 10px;
+  padding: 15px;
+  width: 50vw;
+  border: 1px solid #add2eb;
+}
+
+h1 {
+  font-size: 19px;
+  color: #3A506B;
+  margin: 7px 0 7px 0;
+  margin-bottom: 10px;
+}
+
+.submit-btn {
+  min-width: 100px;
+  height: 30px;
+  background-color: #0B132B;
+  color: #fff;
+  margin: 5px;
+  border: 1px #1C2541;
+
+}
+
+.submit-btn:hover {
+  background-color: #3A506B;
+}
+
+.error-box {
+  background-color: rgb(134, 52, 52);
+  padding: 15px;
+  width: 50vw;
+  color: #fff;
+  font-weight: 600;
+}

@@ -1,0 +1,22 @@
+<%= render "shared/navbar"%>
+<h1>Create a new chatroom </h1>
+<div class="infobox">
+  On this page you can create your own, custom chatroom! Right now, we have <strong><%= Chatroom.count%> </strong>
+  created and a total of <%= User.count%> users registered on site!
+</div>
+
+<% if @chatroom.errors.any? %>
+  <div class="error-box">
+    <h2><%= pluralize(@chatroom.errors.count, "error") %> prevented this chatroom from being saved:</h2>
+    <ul>
+      <% @chatroom.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+    </ul>
+  </div>
+<% end %>
+<%= form_with model: @chatroom, class: "form-chatroom" do |form| %>
+  <%= form.label "Chatroom Name", class: "chatroom-label"%> <br>
+  <%= form.text_field :name, class: "chatroom-input", required: true, autofocus: true, placeholder: "A fancy name for your chatroom"%><br>
+  <%= form.submit "Create chatroom", class: "submit-btn"%>
+<%end%>
