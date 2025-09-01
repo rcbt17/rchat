@@ -1,0 +1,13 @@
+<%= render "shared/navbar"%>
+<div class="container">
+  <h1>Browse chatrooms</h1>
+  <div class="infobox">
+  You have created <%= @user_chatrooms.count%> chatrooms, to only show yours click <%= link_to "here", manage_chatrooms_path%>!
+  </div>
+
+  <% @chatrooms.each do |chatroom| %>
+    <a class="chatroom-list-element" href=<%= chatroom_path(chatroom) %>>
+      <strong><%= chatroom.name %></strong> created by <i> <%= chatroom.user.email_address%></i>  - <%= time_ago_in_words(chatroom.created_at) %> ago
+    </a>
+  <%end%>
+</div>

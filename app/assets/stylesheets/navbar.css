@@ -1,0 +1,30 @@
+.navbar {
+  position: fixed;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  padding: 10px;
+  height: 40px;
+  background-color: #0B132B;
+}
+
+.navbar-right {
+  float: right;
+  text-align: center;
+  display: flex;
+  align-items: center;
+  min-height: 40px;
+  gap: 25px;
+  margin-right: 50px;
+}
+
+.navlink {
+  font-weight: 500;
+  font-size: 15px;
+  color: #fff;
+}
+
+.navlink:hover {
+  color: #5BC0BE;
+  text-decoration: none;
+}

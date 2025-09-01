@@ -30,12 +30,6 @@ a:hover {
   text-decoration: underline;
 }
 
-h1 {
-  font-size: 19px;
-  color: #3A506B;
-  margin: 5px;
-  margin-bottom: 10px;
-}
 
 .auth-input {
   height: 25px;
@@ -46,18 +40,4 @@ h1 {
 
 .auth-input:focus {
   outline: 0px;
-}
-
-.submit-btn {
-  min-width: 100px;
-  height: 30px;
-  background-color: #0B132B;
-  color: #fff;
-  margin: 5px;
-  border: 1px #1C2541;
-
-}
-
-.submit-btn:hover {
-  background-color: #3A506B;
 }

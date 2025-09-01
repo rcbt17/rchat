@@ -1,0 +1,9 @@
+<nav class="navbar">
+  <div class="navbar-right">
+    <%= link_to "Home", root_path,  class: "navlink" %>
+    <%= link_to "New Chatroom", new_chatroom_path,  class: "navlink" %>
+    <%= link_to "Chatrooms", chatrooms_path,  class: "navlink" %>
+    <%= link_to "My Stats", root_path,  class: "navlink" %>
+      <%= link_to 'Logout', session_path, class: "navlink", method: :delete, data: {turbo_method: :delete} %>
+  </div>
+</nav>

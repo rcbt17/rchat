@@ -1,2 +1,9 @@
-<h1> Welcome back, <%= Current.user.email_address %></h1>
-<%= link_to 'Logout', session_path, method: :delete, data: {turbo_method: :delete} %>
+<%= render "shared/navbar"%>
+
+<div class="container">
+  <div class="home-message">
+    <h1 class="h1-home">
+        <h1> Welcome back, <%= Current.user.email_address %></h1>
+    </h1>
+  </div>
+</div>
