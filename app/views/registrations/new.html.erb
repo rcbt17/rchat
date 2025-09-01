@@ -1,0 +1,17 @@
+<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<div class="auth-section">
+  <div class="auth-inner">
+    <h1>:) Howdy, welcome on board</h1>
+<%= form_with model: @user, class: "form-auth", url: registration_url do |form| %>
+  <%= form.email_field :email_address, class: "auth-input", required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address]%><br>
+  <%= form.password_field :password, class: "auth-input",  required: true, autocomplete: "current-password", placeholder: "Your password", maxlength: 64 %><br>
+  <%= form.password_field :password_confirmation, class: "auth-input",  required: true, autcomplete: "current-password", placeholder: "Password confirmation", maxlength: 64%><br>
+  <%= form.submit "Sign up", class: "submit-btn"%>
+<% end %>
+    <div class="buttons-section">
+      <%= link_to "Forgot password?", new_password_path %> <br>
+      <%= link_to "Already registered? Sign in!", new_session_path %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,2 @@
+<h1> Welcome back, <%= Current.user.email_address %></h1>
+<%= link_to 'Logout', session_path, method: :delete, data: {turbo_method: :delete} %>

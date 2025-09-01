@@ -1,0 +1,18 @@
+<%= stylesheet_link_tag "auth" %>
+
+<%= tag.div(flash[:alert], style: "color:red") if flash[:alert] %>
+<%= tag.div(flash[:notice], style: "color:green") if flash[:notice] %>
+<div class="auth-section">
+  <div class="auth-inner">
+    <h1>:) Howdy, you need to log in</h1>
+    <%= form_with url: session_path, class: "form-auth" do |form| %>
+      <%= form.email_field :email_address, class: "auth-input", required: true, autofocus: true, autocomplete: "username", placeholder: "Enter your email address", value: params[:email_address] %><br>
+      <%= form.password_field :password, class: "auth-input", required: true, autocomplete: "current-password", placeholder: "Enter your password", maxlength: 72 %><br>
+      <%= form.submit "Sign in", class: "submit-btn" %>
+    <% end %>
+    <div class="buttons-section">
+      <%= link_to "Forgot password?", new_password_path %> <br>
+      <%= link_to "Sign up", new_registration_path %>
+    </div>
+  </div>
+</div>
