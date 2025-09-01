@@ -15,6 +15,8 @@ class ChatroomsController < ApplicationController
 
   def show
     @chatroom = Chatroom.find(params[:id])
+    @messages = Message.where(chatroom: @chatroom).last(100)
+    @message = @chatroom.messages.build
   end
 
   def index

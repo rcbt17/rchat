@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get "messages/create"
   get "pages/home"
   resource :session
   resources :passwords, param: :token
   resource :registration, only: %i[new create]
-  resources :chatrooms, only: %i[new create show index]
+  resources :chatrooms, only: %i[new create show index] do
+    resources :messages, only: :create
+  end
   get "manage_chatrooms", to: "chatrooms#manage"
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
