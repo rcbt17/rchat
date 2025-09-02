@@ -1,14 +1,24 @@
-import { Controller } from "@hotwired/stimulus"
+import { Controller } from "@hotwired/stimulus";
 
 // Connects to data-controller="chatroom"
 export default class extends Controller {
-  static targets = ["currentUserId"]
+  static targets = ["characters", "message", "submit"];
   connect() {
-    this.currentUserId = this.element.dataset.currentUserId
-   // console.log(this.currentUserId)
+    this.submitTarget.disabled = true;
+    this.messageTarget.value = "";
   }
 
-  setMessageClass() {
-
+  update() {
+    const leftCharacters = 300 - this.messageTarget.value.length;
+    if (leftCharacters < 1) {
+      this.messageTarget.value = this.messageTarget.value.substr(0, 299);
+      this.charactersTarget.innerHTML = `<p class="error-message"> 0 characters left</p>`;
+    } else if (leftCharacters < 300) {
+      this.charactersTarget.innerText = `${leftCharacters} characters left`;
+      this.submitTarget.disabled = false;
+    } else {
+      this.submitTarget.disabled = true;
+      this.charactersTarget.innerText = "";
+    }
   }
 }
