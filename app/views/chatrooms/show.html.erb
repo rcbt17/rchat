@@ -1,14 +1,17 @@
 <%= render "shared/navbar"%>
 <%= turbo_stream_from @chatroom %>
-<div class="container" data-controller="chatroom" >
+<div data-chat-room-id="<%= @chatroom.id %>" class="container" data-controller="chatroom" >
   <h1><%= @chatroom.name %></h1>
   <div class="chatbox" id="<%= dom_id(@chatroom, :messages)%>">
     <%= render @messages%>
+  </div>
+  <div class="active-users" id="<%= dom_id(@chatroom)%>">
+    <%= render 'chatrooms/active' %>
   </div>
   <%= form_with model: [@chatroom, @message], class: "new-message" do |form| %>
     <%= form.text_area :body, data: {"chatroom-target": "message", "action": "input->chatroom#update"}%>
     <%= form.submit "Send", data: {"chatroom-target": "submit"},  class: "submit-message"%>
   <% end %>
-     <p data-chatroom-target="characters">  </p>
-     <audio id="message-sound" hidden src="<%= audio_path("message.mp3")%>"></audio>
+  <p data-chatroom-target="characters">  </p>
+  <audio id="message-sound" hidden src="<%= audio_path("message.mp3")%>"></audio>
 </div>

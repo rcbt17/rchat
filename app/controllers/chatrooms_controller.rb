@@ -17,6 +17,7 @@ class ChatroomsController < ApplicationController
     @chatroom = Chatroom.find(params[:id])
     @messages = Message.where(chatroom: @chatroom).last(100)
     @message = @chatroom.messages.build
+    @active_users, @idle_users = PresenceRoster.build(@chatroom.id)
   end
 
   def index

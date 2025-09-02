@@ -1,0 +1,19 @@
+<div class="presence">
+  <div class="presence-row">
+    <strong>Active (<%= @active_users&.size %>)</strong>
+    <ul>
+      <% @active_users&.each do |u| %>
+        <li><%= u.email_address %></li>
+      <% end %>
+    </ul>
+  </div>
+
+  <div class="presence-row">
+    <strong>Idle (<%= @idle_users&.size || 0 %>)</strong>
+    <ul>
+      <% @idle_users&.each do |u| %>
+        <li><%= u.email_address %></li>
+      <% end %>
+    </ul>
+  </div>
+</div>

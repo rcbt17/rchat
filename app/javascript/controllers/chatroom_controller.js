@@ -1,11 +1,27 @@
 import { Controller } from "@hotwired/stimulus";
-
+import consumer from "channels/consumer";
 // Connects to data-controller="chatroom"
 export default class extends Controller {
   static targets = ["characters", "message", "submit"];
   connect() {
     this.submitTarget.disabled = true;
     this.messageTarget.value = "";
+    this.subscription = consumer.subscriptions.create(
+      {
+        channel: "ChatroomChannel",
+        chatroom_id: this.element.dataset.chatRoomId,
+      },
+      {
+        connected: () => {
+          this.heartbeat = setInterval(() => {
+            this.subscription.perform("heartbeat")
+          }, 5000);
+        },
+        disconnected: () => {
+          clearInterval(this.heartbeat)
+        }
+      }
+    );
   }
 
   update() {
@@ -20,5 +36,10 @@ export default class extends Controller {
       this.submitTarget.disabled = true;
       this.charactersTarget.innerText = "";
     }
+  }
+
+  disconnect() {
+    clearInterval(this.heartbeat)
+    this.subscription?.unsubscribe();
   }
 }

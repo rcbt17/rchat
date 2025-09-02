@@ -63,3 +63,4 @@ group :test do
 end
 
 gem "pry-byebug"
+gem "redis", "~> 5.0"
